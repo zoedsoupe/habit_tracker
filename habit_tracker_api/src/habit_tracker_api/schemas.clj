@@ -5,9 +5,20 @@
 (def meta-db (hodur/init-schema
               '[^{:datomic/tag-recursive true}
 
+                Time
+                [^DateTime created-at]
+
+                Identifier
+                [^ID id]
+
                 Habit
-                [^ID id
-                 ^String title
-                 ^DateTime created_at]]))
+                [^String title]
+
+                Day
+                [^DateTime date]
+
+                DayHabit
+                [^Day day
+                 ^Habit habit]]))
 
 (def datomic-schema (hodur-datomic/schema meta-db))
